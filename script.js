@@ -9,10 +9,10 @@ function currentSlide(n, isDoted) {
   for (var i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
-  if (isDoted) {
-    count = n;
-  }
   bannersInit(n);
+  if (isDoted) {
+    count = n + 1;
+  }
 }
 
 for (var i = 0; i < imageList.length; i++) {
@@ -29,14 +29,15 @@ function bannersInit(index) {
     dots[index - 1].className = dots[index - 1].className.replace(" active", "");
     dots[index].className += " active";
   }
+  count++;
 }
-currentSlide(count++, false);
+currentSlide(count, false);
 
 setInterval(function () {
   if (count === imageList.length) {
     count = 0;
   }
-  currentSlide(count++, false);
+  currentSlide(count, false);
 }, 5000)
 
 function preNextSlide(ind) {
